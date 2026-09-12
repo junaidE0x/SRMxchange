@@ -1,4 +1,4 @@
-# RExchange
+# SRMxchange
 
 **Campus-only student resource exchange platform for SRM Institute of Science and Technology**
 

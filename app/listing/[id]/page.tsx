@@ -11,6 +11,8 @@ import { ArrowLeft, Bookmark } from 'lucide-react';
 import Link from 'next/link';
 import { toast } from 'sonner';
 
+import { getDetailImage } from '@/lib/images';
+
 export default function ListingDetailPage() {
   const params = useParams();
   const id = params?.id as string;
@@ -154,10 +156,20 @@ export default function ListingDetailPage() {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Image / category visual */}
-        <div className={`rounded-2xl bg-gradient-to-br ${gradient} flex items-center justify-center h-64 lg:h-full min-h-[260px]`}>
-          <span className="text-8xl font-black text-white/20">
-            {listing.title?.charAt(0).toUpperCase()}
-          </span>
+        <div className="rounded-2xl overflow-hidden">
+          {listing.image_url ? (
+            <img
+              src={(listing.image_url)}
+              alt={listing.title}
+              className="w-full h-auto object-contain rounded-2xl"
+            />
+          ) : (
+            <div className={`w-full h-64 bg-gradient-to-br ${gradient} flex items-center justify-center rounded-2xl`}>
+              <span className="text-8xl font-black text-white/20">
+                {listing.title?.charAt(0).toUpperCase()}
+              </span>
+            </div>
+          )}
         </div>
 
         {/* Details */}

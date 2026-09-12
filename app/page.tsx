@@ -134,7 +134,7 @@ export default function Home() {
             <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-violet-500 to-cyan-400 flex items-center justify-center">
               <GraduationCap className="h-5 w-5 text-white" />
             </div>
-            <span className="text-lg font-bold gradient-text">RExchange</span>
+            <span className="text-lg font-bold gradient-text">SRMxchange</span>
           </Link>
           <div className="hidden md:flex items-center gap-8">
             <Link href="/#browse" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Browse</Link>
@@ -316,7 +316,7 @@ export default function Home() {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold">How <span className="gradient-text-cyan">RExchange</span> Works</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold">How <span className="gradient-text-cyan">SRMxchange</span> Works</h2>
           <p className="mt-3 text-muted-foreground">Three simple steps from listing to connecting</p>
         </motion.div>
 
@@ -383,7 +383,7 @@ export default function Home() {
               <GraduationCap className="h-4 w-4 text-white" />
             </div>
             <div>
-              <span className="text-sm font-bold gradient-text">RExchange</span>
+              <span className="text-sm font-bold gradient-text">SRMxchange</span>
               <p className="text-xs text-muted-foreground">Exchange smarter, study better.</p>
             </div>
           </div>

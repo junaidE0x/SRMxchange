@@ -280,7 +280,7 @@ export const initialNotifications: AppNotification[] = [
   {
     id: 'n3',
     type: 'system',
-    title: 'Welcome to RExchange',
+    title: 'Welcome to SRMxchange',
     description: 'Complete your profile to get the Verified SRM Student badge',
     time: '1d ago',
     read: true,

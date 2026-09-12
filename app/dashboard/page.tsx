@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Plus, Search, Sun } from 'lucide-react';
+import { Plus, Search, Sun, Moon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { getCurrentUser } from '@/lib/auth';
 import { getListings } from '@/lib/listings';
@@ -126,6 +126,14 @@ export default function DashboardPage() {
     return searchMatch;
   });
 
+  const getGreeting = () => {
+    const hour = new Date().getHours()
+    if (hour < 12) return 'Good morning'
+    if (hour < 17) return 'Good afternoon'
+    if (hour < 21) return 'Good evening'
+    return 'Good night'
+  }
+
   return (
     <PageTransition>
       <DashboardShell activeNav="browse" search={search} onSearchChange={setSearch}>
@@ -141,13 +149,17 @@ export default function DashboardPage() {
           <div className="relative flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <div>
               <p className="text-sm text-muted-foreground flex items-center gap-2">
-                <Sun className="h-4 w-4 text-amber-400" /> Good morning
+                {new Date().getHours() < 21 
+                  ? <Sun className="h-4 w-4 text-amber-400" /> 
+                  : <Moon className="h-4 w-4 text-blue-400" />
+                }
+                {getGreeting()}
               </p>
               <h1 className="text-2xl font-bold mt-1">
                 {profile?.name ?? 'Loading...'} <span className="text-muted-foreground text-lg font-normal">👋</span>
               </h1>
               <p className="text-sm text-muted-foreground mt-1">
-                {profile?.dept} · {profile?.year}st Year · {profile?.reg_no}
+                {profile?.dept} · {profile?.year}{['st','nd','rd'][profile?.year - 1] ?? 'th'} Year · {profile?.reg_no}
               </p>
             </div>
             <Button

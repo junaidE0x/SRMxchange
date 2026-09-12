@@ -66,7 +66,7 @@ export function DashboardShell({ children, activeNav, search, onSearchChange }: 
             <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-violet-500 to-cyan-400 flex items-center justify-center">
               <GraduationCap className="h-5 w-5 text-white" />
             </div>
-            <span className="text-lg font-bold gradient-text hidden sm:block">RExchange</span>
+            <span className="text-lg font-bold gradient-text hidden sm:block">SRMxchange</span>
           </Link>
 
           <div className="flex-1 max-w-md relative">
@@ -76,11 +76,8 @@ export function DashboardShell({ children, activeNav, search, onSearchChange }: 
               placeholder="Search listings, students..."
               value={search ?? ''}
               onChange={(e) => onSearchChange?.(e.target.value)}
-              className="w-full pl-10 pr-16 py-2 rounded-full bg-white/[0.04] border border-white/[0.08] text-sm placeholder:text-muted-foreground focus:outline-none focus:border-violet-500/40 focus:ring-1 focus:ring-violet-500/30 transition-all"
+              className="w-full pl-10 pr-4 py-2 rounded-full bg-white/[0.04] border border-white/[0.08] text-sm placeholder:text-muted-foreground focus:outline-none focus:border-violet-500/40 focus:ring-1 focus:ring-violet-500/30 transition-all"
             />
-            <kbd className="absolute right-3 top-1/2 -translate-y-1/2 hidden sm:flex items-center gap-0.5 px-1.5 py-0.5 rounded text-[10px] text-muted-foreground bg-white/[0.04] border border-white/[0.08]">
-              ⌘K
-            </kbd>
           </div>
 
           <div className="flex items-center gap-2 shrink-0">
@@ -98,9 +95,11 @@ export function DashboardShell({ children, activeNav, search, onSearchChange }: 
               <DropdownMenuContent align="end" className="w-52 glass-strong border-white/10">
                 <DropdownMenuLabel className="text-muted-foreground text-xs">{profile?.name ?? '...'}</DropdownMenuLabel>
                 <DropdownMenuSeparator className="bg-white/[0.06]" />
-                <DropdownMenuItem className="hover:bg-white/5 cursor-pointer">
-                  <User className="h-4 w-4 mr-2" /> Profile
-                </DropdownMenuItem>
+                <Link href="/dashboard/settings">
+                  <DropdownMenuItem className="hover:bg-white/5 cursor-pointer">
+                    <User className="h-4 w-4 mr-2" /> Profile
+                  </DropdownMenuItem>
+                </Link>
                 <Link href="/dashboard/my-listings">
                   <DropdownMenuItem className="hover:bg-white/5 cursor-pointer">
                     <Package className="h-4 w-4 mr-2" /> My Listings
@@ -133,10 +132,6 @@ export function DashboardShell({ children, activeNav, search, onSearchChange }: 
               {item.label}
             </Link>
           ))}
-          <div className="mt-auto glass rounded-xl p-4">
-            <p className="text-xs font-medium text-violet-300">Pro tip</p>
-            <p className="text-xs text-muted-foreground mt-1">Use ⌘K to quickly search across all listings.</p>
-          </div>
         </aside>
 
         {/* Main content */}

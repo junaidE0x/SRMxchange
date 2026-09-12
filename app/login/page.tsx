@@ -118,7 +118,7 @@ export default function LoginPage() {
 
           <div className="mt-6 text-center space-y-2">
             <p className="text-xs text-muted-foreground">
-              Only SRM KTR students can access RExchange
+              Only SRM KTR students can access SRMxchange
             </p>
             <p className="text-xs text-muted-foreground">
               Don't have an account?{' '}

@@ -7,10 +7,10 @@ import { CustomCursor } from '@/components/custom-cursor';
 const inter = Inter({ subsets: ['latin'], weight: ['400', '500', '600', '700', '800'] });
 
 export const metadata: Metadata = {
-  title: 'RExchange — SRM KTR Student Resource Exchange',
+  title: 'SRMxchange — SRM KTR Student Resource Exchange',
   description: 'Exchange smarter, study better. The marketplace for SRM Kattankulathur students.',
   openGraph: {
-    title: 'RExchange — SRM KTR Student Resource Exchange',
+    title: 'SRMxchange — SRM KTR Student Resource Exchange',
     description: 'Exchange smarter, study better. The marketplace for SRM Kattankulathur students.',
   },
 };

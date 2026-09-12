@@ -11,6 +11,8 @@ import { toggleSaved } from '@/lib/listings';
 import { getCurrentUser } from '@/lib/auth';
 import { toast } from 'sonner';
 
+import { getCardImage } from '@/lib/images';
+
 const categoryBadgeColors: Record<string, string> = {
   books: 'bg-violet-500/15 text-violet-300 border-violet-500/30',
   electronics: 'bg-cyan-500/15 text-cyan-300 border-cyan-500/30',
@@ -48,7 +50,7 @@ export function ListingCard({
   onDelete,
   onUnsave,
   exitAnimation = false,
-}: ListingCardProps) {
+}: ListingCardProps): React.ReactElement {
   const cat = categories.find((c) => c.id === listing.category);
   const glow = (categoryGlowMap as any)?.[listing.category] || 'rgba(124, 58, 237, 0.3)';
   const cardRef = useRef<HTMLDivElement>(null);
@@ -69,7 +71,6 @@ export function ListingCard({
   const avatarGradient = student.avatarGradient || 'from-violet-500 to-cyan-400';
   const initials = studentName.split(' ').filter(Boolean).map((n: string) => n[0]).join('').slice(0, 2).toUpperCase() || 'S';
   const gradient = listing.gradient || 'from-violet-600 via-purple-700 to-indigo-800';
-
   const handleSave = async (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
@@ -107,17 +108,33 @@ export function ListingCard({
         e.currentTarget.style.borderColor = '';
       }}
     >
-      <div className={`relative h-40 bg-gradient-to-br ${gradient} flex items-center justify-center overflow-hidden`}>
-        <div className="absolute inset-0 bg-black/20" />
-        <div className="absolute inset-0 opacity-30" style={{ backgroundImage: 'radial-gradient(circle at 30% 50%, rgba(255,255,255,0.15) 0%, transparent 60%)' }} />
-        <span className="relative text-5xl font-bold text-white/90 tracking-tight">
-          {listing.title ? listing.title.charAt(0) : 'R'}
-        </span>
+      <div className="relative h-40 flex items-center justify-center overflow-hidden">
+        {/* Image or Placeholder */}
+        {listing.image_url ? (
+          <img
+            src={(listing.image_url)}
+            alt={listing.title}
+            className="w-full h-full object-cover"
+          />
+        ) : (
+          <div className={`w-full h-full bg-gradient-to-br ${gradient} flex items-center justify-center`}>
+            <span className="text-6xl font-black text-white/20">
+              {listing.title?.charAt(0).toUpperCase()}
+            </span>
+          </div>
+        )}
+        
+        {/* Overlay gradient for better text readability */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+        
+        {/* Category Badge */}
         <div className="absolute top-3 left-3">
           <Badge variant="outline" className={`${categoryBadgeColors[listing.category] || 'bg-violet-500/15 text-violet-300 border-violet-500/30'} border backdrop-blur-md text-xs`}>
             {cat?.label || listing.category}
           </Badge>
         </div>
+        
+        {/* Type Badge */}
         <div className="absolute top-3 right-12">
           <Badge variant="outline" className="bg-black/40 text-white border-white/20 backdrop-blur-md text-xs">
             {typeLabels[listing.type] || listing.type}
@@ -167,6 +184,7 @@ export function ListingCard({
           </div>
         )}
       </div>
+      
       <div className="p-4">
         <h3 className="font-semibold text-sm text-foreground truncate group-hover:text-violet-300 transition-colors">
           {listing.title}
