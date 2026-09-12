@@ -32,6 +32,7 @@ Current solutions (WhatsApp groups, notice boards, word of mouth) are:
 - **Structured listings** — title, category, type (Free / Exchange / Paid), description
 - **Request to Connect** — mutual acceptance flow; phone numbers are shared only after both sides accept
 - **Content moderation** — keyword filtering blocks inappropriate listings from being posted
+- **Image uploads** — listing photos stored on Cloudinary
 - **Save / Bookmark** — keep track of items you’re interested in
 
 ---
@@ -46,6 +47,7 @@ Current solutions (WhatsApp groups, notice boards, word of mouth) are:
 
 ### Listings
 - Create listings with category, type (Free / Exchange / Paid), and optional price
+- Image upload for listings via **Cloudinary**
 - Category filters + search
 - Automated text moderation — listings containing inappropriate keywords are **rejected and never posted**
 - My Listings page with delete support
@@ -74,6 +76,7 @@ Current solutions (WhatsApp groups, notice boards, word of mouth) are:
 | Animation      | Framer Motion                |
 | Icons          | Lucide React                 |
 | Backend        | Supabase (Auth + PostgreSQL) |
+| Media storage  | Cloudinary                   |
 | Toasts         | Sonner                       |
 | Deployment     | Vercel                       |
 
